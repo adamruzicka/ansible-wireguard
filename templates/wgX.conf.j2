@@ -1,0 +1,50 @@
+{% set interface = vars.get('wireguard_' + item + '_interface', {}) -%}
+{% set peers = vars.get('wireguard_' + item + '_peers', {}) -%}
+
+{% set interface_required_keys = { 'address': 'Address', 'private_key': 'PrivateKey' } -%}
+{% set interface_optional_keys = {
+   'listen_port': 'ListenPort',
+   'fw_mark': 'FwMark',
+   'dns': 'DNS',
+   'mtu': 'MTU',
+   'table': 'Table',
+   'pre_up': 'PreUp',
+   'post_up': 'PostUp',
+   'pre_down': 'PreDown',
+   'post_down': 'PostDown',
+   'save_config': 'SaveConfig'
+} -%}
+{% set peer_required_keys = {
+   'public_key': 'PublicKey',
+   'allowed_ips': 'AllowedIPs'
+} -%}
+{% set peer_optional_keys = {
+   'endpoint': 'EndPoint',
+   'preshared_key': 'PresharedKey',
+   'persistent_keepalive': 'PersistentKeepalive'
+} -%}
+{{ ansible_managed | comment }}
+
+[Interface]
+{% for key, option in interface_required_keys.items() %}
+{{ option }} = {{ interface[key] }}
+{% endfor %}
+{% for key, option in interface_optional_keys.items() %}
+{% if interface[key] is defined %}
+{{ option }} = {{ interface[key] }}
+{% endif %}
+{% endfor %}
+
+{% for peer_name, peer in peers.items() %}
+[Peer] # {{ peer_name }}
+{% for key, option in peer_required_keys.items() %}
+{{ option }} = {{ peer[key] }}
+{% endfor %}
+
+{% for key, option in peer_optional_keys.items() %}
+{% if peer[key] is defined %}
+{{ option }} = {{ peer[key] }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}

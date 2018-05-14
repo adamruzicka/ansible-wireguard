@@ -1,0 +1,19 @@
+---
+- name: Enable wireguard COPR repository
+  get_url:
+    dest: /etc/yum.repos.d/_copr_jdoss-wireguard.repo
+    url: "https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/{{ ansible_distribution }}-{{ ansible_distribution_version }}/jdoss-wireguard-{{ ansible_distribution }}-{{ ansible_distribution_version }}.repo"
+
+- name: Enable EPEL
+  package:
+    name: epel-release
+    state: present
+  when: ansible_distribution != "Fedora"
+
+- name: Install wireguard
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - wireguard-dkms
+    - wireguard-tools
