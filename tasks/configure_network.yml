@@ -1,5 +1,5 @@
 ---
 - name: Configure {{ item }}
   template:
-    src: wgX.conf
+    src: wgX.conf.j2
     dest: /etc/wireguard/{{ item }}.conf
