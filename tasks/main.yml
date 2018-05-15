@@ -1,4 +1,8 @@
 ---
 - include_tasks: "{{ ansible_os_family | lower }}_packages.yml"
+  tags:
+    - install
 - include_tasks: configure_network.yml
   with_items: "{{ wireguard_networks }}"
+  tags:
+    - configure
