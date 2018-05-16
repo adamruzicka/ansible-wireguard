@@ -40,7 +40,6 @@
 {% for key, option in peer_required_keys.items() %}
 {{ option }} = {{ peer[key] }}
 {% endfor %}
-
 {% for key, option in peer_optional_keys.items() %}
 {% if peer[key] is defined %}
 {{ option }} = {{ peer[key] }}
