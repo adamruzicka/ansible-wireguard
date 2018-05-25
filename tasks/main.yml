@@ -2,6 +2,14 @@
 - include_tasks: "{{ ansible_os_family | lower }}_packages.yml"
   tags:
     - install
+
+- name: Create /etc/wireguard
+  file:
+    path: /etc/wireguard
+    state: directory
+    owner: root
+    group: root
+
 - include_tasks: configure_network.yml
   with_items: "{{ wireguard_networks }}"
   tags:

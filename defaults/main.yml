@@ -1,4 +1,5 @@
 ---
+wireguard_manage_services: true
 wireguard_networks: []
 # wireguard_networks:
 #   - wg0

@@ -3,6 +3,7 @@
   template:
     src: wgX.conf.j2
     dest: /etc/wireguard/{{ item }}.conf
+  register: configuration
 
 - name: Enable wg-quick@{{ item }} service
   service:
@@ -10,9 +11,10 @@
     state: started
     enabled: yes
   tags: install
+  when: wireguard_manage_services
 
 - name: Restart wg-quick@{{ item }}
   service:
     name: wg-quick@{{ item }}
     state: restarted
-  when: configuration is changed
+  when: configuration is changed and wireguard_manage_services
