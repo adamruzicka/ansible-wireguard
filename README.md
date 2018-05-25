@@ -140,4 +140,4 @@ Supported platforms
 License
 -------
 
-BSD
+MIT
