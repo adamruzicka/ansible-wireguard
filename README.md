@@ -128,6 +128,15 @@ client2
      - wireguard
 ```
 
+Supported platforms
+-------------------
+
+- Arch Linux
+- Debian
+- EL7 and derivatives
+- Fedora
+- Ubuntu
+
 License
 -------
 
