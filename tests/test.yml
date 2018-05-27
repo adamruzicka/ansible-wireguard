@@ -1,0 +1,35 @@
+---
+- hosts: all
+  vars:
+    wireguard_manage_services: false
+    wireguard_networks:
+      - wg0
+      - wg1
+
+    wireguard_wg0_interface:
+      address: 10.0.0.1/24
+      private_key: 12345
+      listen_port: 12345
+
+    wireguard_wg0_peers:
+      peer-0-0:
+        public_key: 0-12345-pub
+        allowed_ips: 10.0.0.10/24
+      peer-0-1:
+        public_key: 0-23456-pub
+        allowed_ips: 10.0.0.11/24
+
+    wireguard_wg1_interface:
+      address: 10.0.1.1/24
+      private_key: 23456
+      listen_port: 23456
+
+    wireguard_wg1_peers:
+      peer-1-0:
+        public_key: 1-12345-pub
+        allowed_ips: 10.0.1.10/24
+      peer-1-1:
+        public_key: 1-23456-pub
+        allowed_ips: 10.0.1.11/24
+  roles:
+    - role_under_test
