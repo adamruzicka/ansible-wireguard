@@ -58,7 +58,7 @@ wireguard_wg0_peers:
   - fugu:
       public_key: 12345
       allowed_ips: 10.0.0.0/16
-```yaml
+```
 
 Dependencies
 ------------
