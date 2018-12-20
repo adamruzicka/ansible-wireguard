@@ -11,6 +11,6 @@
     group: root
 
 - include_tasks: configure_network.yml
-  with_items: "{{ wireguard_networks }}"
+  with_items: "{{ wireguard_interfaces }}"
   tags:
     - configure

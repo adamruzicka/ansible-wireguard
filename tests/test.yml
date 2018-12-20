@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     wireguard_manage_services: false
-    wireguard_networks:
+    wireguard_interfaces:
       - wg0
       - wg1
 
