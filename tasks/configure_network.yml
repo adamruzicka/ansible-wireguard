@@ -27,6 +27,7 @@
   template:
     src: wgX.conf.j2
     dest: /etc/wireguard/{{ item }}.conf
+    mode: '0400'
   register: configuration
 
 - name: Enable wg-quick@{{ item }} service
