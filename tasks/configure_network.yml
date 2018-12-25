@@ -3,25 +3,25 @@
   stat:
     path: "/etc/wireguard/privatekey_{{ item }}"
   register: privatekey_{{ item }}
-  when: wireguard_manage_services
+  when: wireguard_manage_keys
 
 - name: Generate wireguard keys {{ item }}
   shell: "umask 077; wg genkey | tee /etc/wireguard/privatekey_{{ item }} | wg pubkey > /etc/wireguard/publickey_{{ item }}"
   when:
     - not privatekey_{{ item }}.stat.exists
-    - wireguard_manage_services
+    - wireguard_manage_keys
 
 - name: Read private key {{ item }}
   slurp:
     src: "/etc/wireguard/privatekey_{{ item }}"
   register: private_{{ item }}
-  when: wireguard_manage_services
+  when: wireguard_manage_keys
 
 - name: Read public key {{ item }}
   slurp:
     src: "/etc/wireguard/publickey_{{ item }}"
   register: public_{{ item }}
-  when: wireguard_manage_services
+  when: wireguard_manage_keys
 
 - name: Configure {{ item }}
   template:
