@@ -155,24 +155,6 @@ client2
 All hosts is servers and clients (peer2peer).
 
 ```yaml
-# host_vars/someserver.yml
-wireguard_interface:
-  wg0:
-    address: 10.0.0.1/16
-    private_key: someserver_private_key
-    listen_port: 12345
-
-wireguard_peers:
-  wg0:
-    client1:
-      public_key: client1_public_key
-      allowed_ips: 10.0.0.11/32
-    client2:
-      public_key: client2_public_key
-      allowed_ips: 10.0.0.12/32
-```
-
-```yaml
 # group_vars/all.yml
 wireguard_listen_port: 5888
 wireguard_wg0_preshared_key: secret_preshared_key
