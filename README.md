@@ -122,7 +122,7 @@ client2
 # playbook.yml
 - hosts: all
   vars:
-    wireguard_interfaces:
+    wireguard_networks:
       - wg0
   roles:
      - wireguard
