@@ -1,27 +1,33 @@
 ---
-wireguard_manage_services: true
-wireguard_networks: []
-# wireguard_networks:
-#   - wg0
-# wireguard_wg0_peers:
-#   - foobar:
-#       public_key:
-#       allowed_ips:
-#       # endpoint:
-#       # preshared_key:
-#       # persistent_keepalive:
+wireguard_manage_keys: False
+wireguard_manage_services: True
 
-# wireguard_wg0_interface:
-#   address:
-#   private_key:
-#   # listen_port:
-#   # fw_mark:
-#   # dns: []
-#   # MTU:
-#   # Table:
-#   # pre_up: []
-#   # post_up: []
-#   # pre_down: []
-#   # post_down: []
-#   # save_config:
+wireguard_interfaces: []
+# wireguard_interfaces:
+#   - wg0
+wireguard_peers: {}
+# wireguard_peers:
+#   wg0:
+#     - foobar:
+#         public_key:
+#         allowed_ips:
+#         #endpoint:
+#         #preshared_key:
+#         #persistent_keepalive:
+
+wireguard_interface: {}
+# wireguard_interface:
+#   wg0:
+#     address:
+#     private_key:
+#     #listen_port:
+#     #fw_mark:
+#     #dns: []
+#     #mtu:
+#     #table:
+#     #pre_up: []
+#     #post_up: []
+#     #pre_down: []
+#     #post_down: []
+#     #save_config:
 
