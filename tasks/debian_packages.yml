@@ -1,7 +1,24 @@
 ---
 - include_tasks: "{{ ansible_distribution | lower }}_repositories.yml"
 
+- name: Install linux headers (Ubuntu)
+  apt:
+    name:
+      - linux-headers-generic
+      - linux-headers-{{ ansible_kernel }}
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install kernel headers (Debian)
+  apt:
+    name: linux-headers-{{ ansible_kernel }}
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "Debian"
+
 - name: Install wireguard
-  package:
+  apt:
     name: wireguard
     state: present
+    update_cache: yes
