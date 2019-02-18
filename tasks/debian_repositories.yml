@@ -9,4 +9,5 @@
       Package: *
       Pin: release a=unstable
       Pin-Priority: 150
-
+- apt:
+    update_cache: true
