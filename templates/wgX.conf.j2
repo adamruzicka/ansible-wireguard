@@ -1,5 +1,5 @@
-{% set interface = vars.get('wireguard_' + item + '_interface', {}) -%}
-{% set peers = vars.get('wireguard_' + item + '_peers', {}) -%}
+{% set interface = lookup('vars', 'wireguard_' + item + '_interface') -%}
+{% set peers = lookup('vars', 'wireguard_' + item + '_peers') -%}
 
 {% set interface_required_keys = { 'address': 'Address', 'private_key': 'PrivateKey' } -%}
 {% set interface_optional_keys = {
