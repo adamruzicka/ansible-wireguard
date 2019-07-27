@@ -1,8 +1,9 @@
 {% set interface = lookup('vars', 'wireguard_' + item + '_interface') -%}
 {% set peers = lookup('vars', 'wireguard_' + item + '_peers') -%}
 
-{% set interface_required_keys = { 'address': 'Address', 'private_key': 'PrivateKey' } -%}
+{% set interface_required_keys = { 'private_key': 'PrivateKey' } -%}
 {% set interface_optional_keys = {
+   'address': 'Address',
    'listen_port': 'ListenPort',
    'fw_mark': 'FwMark',
    'dns': 'DNS',
