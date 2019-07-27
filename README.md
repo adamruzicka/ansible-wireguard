@@ -21,8 +21,8 @@ This variable allows configuring the WireGuard interface on the host. It is a di
 
 | Key | Description | Required |
 | --- | ----------- | -------- |
-| address | The address to be configured on the interface in CIDR format | Yes |
 | private_key | The private key to use for this interface | Yes |
+| address | The address to be configured on the interface in CIDR format | No |
 | listen_port | A port to listen to, a random port is used if unset | No |
 
 Other configurable things:
