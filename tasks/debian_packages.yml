@@ -1,5 +1,6 @@
 ---
-- include_tasks: "{{ ansible_distribution | lower }}_repositories.yml"
+- include_tasks: "debian_repositories.yml"
+  when: ansible_distribution == 'Debian'
 
 - name: Install wireguard
   package:
