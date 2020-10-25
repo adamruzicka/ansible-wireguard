@@ -6,3 +6,8 @@
   register: adduniverserepo
   changed_when: "'already enabled' not in adduniverserepo.stdout"
   when: ansible_distribution == 'Ubuntu'
+
+- name: Update APT repositories # only if they're old!
+  apt:
+    update_cache: yes
+    cache_valid_time: 604800 # one week
