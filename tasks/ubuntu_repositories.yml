@@ -7,6 +7,11 @@
   changed_when: "'already enabled' not in adduniverserepo.stdout"
   when: ansible_distribution == 'Ubuntu'
 
+- name: Remove old PPA
+  apt_repository:
+    repo: 'ppa:wireguard/wireguard'
+    state: absent
+
 - name: Update APT repositories # only if they're old!
   apt:
     update_cache: yes
