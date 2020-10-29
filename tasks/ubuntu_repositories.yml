@@ -1,6 +1,5 @@
 ---
 - name: Add Ubuntu repositories
-  become: true
   # Use the builtin Ubuntu capability for adding universe, within which wireguard lives
   command: "add-apt-repository universe"
   register: adduniverserepo

@@ -8,6 +8,7 @@ env:
   - distro: fedora27
   - distro: ubuntu1604
   - distro: ubuntu1804
+  - distro: ubuntu2004
 
 script:
   # Download test shim.
