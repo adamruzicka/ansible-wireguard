@@ -1,7 +1,7 @@
 ---
 - name: Add Ubuntu repositories
   # Use the builtin Ubuntu capability for adding universe, within which wireguard lives
-  command: "add-apt-repository universe"
+  command: "add-apt-repository --yes universe"
   register: adduniverserepo
   changed_when: "'already enabled' not in adduniverserepo.stdout"
   when: ansible_distribution == 'Ubuntu'
